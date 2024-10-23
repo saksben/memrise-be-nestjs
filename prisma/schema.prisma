@@ -85,6 +85,7 @@ model Word {
   mems            Json?
   progress        Int       @default(0)
   isDifficult     Boolean   @default(false)
+  isIgnored       Boolean   @default(false)
   // img
   timeTilReview   DateTime
   lesson          Lesson    @relation(fields: [lessonId], references: [id])

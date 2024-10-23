@@ -8,6 +8,7 @@ export class CreateWordDto {
   mems?: string; // Storing as JSON or stringified object
   progress?: number;
   isDifficult?: boolean;
+  isIgnored?: boolean;
   timeTilReview: Date;
   lessonId: number;
 }
