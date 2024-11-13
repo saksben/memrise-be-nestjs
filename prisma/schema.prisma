@@ -36,6 +36,7 @@ model User {
 model Language {
   id              Int       @id @default(autoincrement())
   name            String    @unique
+  slug            String
   // flag
   knownCourses    Course[] @relation("knownLanguage")
   learnedCourses  Course[]  @relation("learnLanguage")
@@ -44,6 +45,7 @@ model Language {
 model Course {
   id              Int       @id @default(autoincrement())
   name            String
+  slug            String
   author          User      @relation("author", fields: [authorId], references: [id])
   authorId        Int
   description     String?
@@ -63,6 +65,7 @@ model Course {
 model Lesson {
   id        Int       @id @default(autoincrement())
   name      String
+  index     Int
   course    Course    @relation("lessons", fields: [courseId], references: [id])
   courseId  Int
   words     Word[]
@@ -87,7 +90,7 @@ model Word {
   isDifficult     Boolean   @default(false)
   isIgnored       Boolean   @default(false)
   // img
-  timeTilReview   DateTime
+  timeTilReview   DateTime?
   lesson          Lesson    @relation(fields: [lessonId], references: [id])
   lessonId        Int
 }

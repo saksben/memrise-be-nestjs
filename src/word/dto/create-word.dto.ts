@@ -9,6 +9,6 @@ export class CreateWordDto {
   progress?: number;
   isDifficult?: boolean;
   isIgnored?: boolean;
-  timeTilReview: Date;
+  timeTilReview?: Date;
   lessonId: number;
 }

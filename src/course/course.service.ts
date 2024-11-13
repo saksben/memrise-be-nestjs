@@ -9,12 +9,27 @@ export class CourseService {
   constructor(private readonly prisma: PrismaService) {}
 
   async findAll(): Promise<Course[]> {
-    return await this.prisma.course.findMany();
+    return await this.prisma.course.findMany({
+      include: {
+        lessons: {
+          include: {
+            words: true,
+          },
+        },
+      },
+    });
   }
 
   async findOne(id: number): Promise<Course> {
     const course = await this.prisma.course.findUnique({
       where: { id },
+      include: {
+        lessons: {
+          include: {
+            words: true,
+          },
+        },
+      },
     });
     if (!course) {
       throw new NotFoundException(`Course with id ${id} not found`);
