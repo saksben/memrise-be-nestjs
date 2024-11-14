@@ -1,5 +1,5 @@
 export class CreateLessonDto {
   name: string;
-  index: number;
+  lessonIndex: number;
   courseId: number;
 }

@@ -65,7 +65,7 @@ model Course {
 model Lesson {
   id        Int       @id @default(autoincrement())
   name      String
-  index     Int
+  lessonIndex     Int
   course    Course    @relation("lessons", fields: [courseId], references: [id])
   courseId  Int
   words     Word[]
