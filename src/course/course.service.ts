@@ -38,8 +38,14 @@ export class CourseService {
   }
 
   async create(data: CreateCourseDto): Promise<Course> {
+    const { authorId, knownLanguageId, learnLanguageId, ...rest } = data;
     return await this.prisma.course.create({
-      data,
+      data: {
+        ...rest,
+        author: { connect: { id: authorId } },
+        knownLanguage: { connect: { id: knownLanguageId } },
+        learnLanguage: { connect: { id: learnLanguageId } },
+      },
     });
   }
 
